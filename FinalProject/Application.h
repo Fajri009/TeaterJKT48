@@ -17,6 +17,8 @@ private:
 	Cube* panggung;
 	Cube* layarLedDepan;
 	Cube* layarLedBelakang;
+	Cube* tangkaiKursi;
+	Cube* bantalKursi;
 	float angle;
 	glm::vec3 viewPos;
 	GLuint shaderProgram, VBO, VAO, EBO, texture, VBO2, VAO2, EBO2, texture2;

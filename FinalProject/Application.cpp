@@ -68,13 +68,17 @@ void Application::Init()
 	layarLedBelakang->SetScale(4.2f, 2.5f, 1.0f);
 	layarLedBelakang->SetColor(0, 0, 0);
 
-	// setup perspective 
-	//setupPerspective();
-	// setup camera
-	//setupCamera();
+	tangkaiKursi = new Cube(shader);
+	tangkaiKursi->Init();
+	tangkaiKursi->SetRotation(0, 0, 1, 0);
+	tangkaiKursi->SetColor(128, 128, 128);
+
+	bantalKursi = new Cube(shader);
+	bantalKursi->Init();
+	bantalKursi->SetRotation(0, 0, 1, 0);
+	bantalKursi->SetColor(178, 34, 34);
+
 	InitCamera();
-	//setup lighting
-	//setupLighting();
 }
 
 void Application::DeInit()
@@ -127,16 +131,49 @@ void Application::LayarLED() {
 
 void Application::Kursi(float posX, float posY) {
 	// Kaki Kiri Depan
-	cube->SetColor(128, 128, 128);
-	cube->SetPosition(0.0f, 0.0f, 7.0f);
-	cube->SetScale(0.07f, 0.8f, 0.07f);
-	cube->Draw();
+	tangkaiKursi->SetPosition(-0.25, 0, 8);
+	tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
+	tangkaiKursi->Draw();
 
 	// Kaki Kanan Depan
-	cube->SetColor(128, 128, 128);
-	cube->SetPosition(0.0f, 0.0f, 7.0f);
-	cube->SetScale(0.07f, 0.8f, 0.07f);
-	cube->Draw();
+	tangkaiKursi->SetPosition(0.25, 0, 8);
+	tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
+	tangkaiKursi->Draw();
+
+	// Kaki Kiri Belakang
+	tangkaiKursi->SetPosition(-0.25, 0, 8.5);
+	tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
+	tangkaiKursi->Draw();
+
+	// Kaki Kanan Belakang
+	tangkaiKursi->SetPosition(0.25, 0, 8.5);
+	tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
+	tangkaiKursi->Draw();
+
+	// Bantal Bawah
+	bantalKursi->SetPosition(0, 0.45f, 8.25f);
+	bantalKursi->SetScale(0.57, 0.1, 0.57);
+	bantalKursi->Draw();
+
+	// Tangkai Kiri 
+	tangkaiKursi->SetPosition(-0.25f, 0.75f, 8.5f);
+	tangkaiKursi->SetScale(0.07f, 0.5f, 0.07f);
+	tangkaiKursi->Draw();
+
+	// Tangkai Kanan
+	tangkaiKursi->SetPosition(0.25f, 0.75f, 8.5f);
+	tangkaiKursi->SetScale(0.07f, 0.5f, 0.07f);
+	tangkaiKursi->Draw();
+
+	// Tangkai Atas
+	tangkaiKursi->SetPosition(0, 1.03f, 8.5f);
+	tangkaiKursi->SetScale(0.57f, 0.07f, 0.07f);
+	tangkaiKursi->Draw();
+
+	// Bantal Belakang
+	bantalKursi->SetPosition(0, 0.77f, 8.5f);
+	bantalKursi->SetScale(0.43f, 0.45f, 0.07f);
+	bantalKursi->Draw();
 }
 
 void Application::Render()
@@ -164,7 +201,7 @@ void Application::Render()
 
 	LayarLED();
 
-	Kursi(10.f, 10.f);
+	Kursi(0, 0);
 
 	glDisable(GL_DEPTH_TEST);
 }
@@ -242,11 +279,11 @@ void Application::ProcessInput(GLFWwindow* window)
 void Application::InitCamera()
 {
 	posCamX = 0.0f;
-	posCamY = 1.0f;
-	posCamZ = 8.0f;
+	posCamY = 1.4f;
+	posCamZ = 12.0f;
 	viewCamX = 0.0f;
 	viewCamY = 1.0f;
-	viewCamZ = 0.0f;
+	viewCamZ = 5.0f;
 	upCamX = 0.0f;
 	upCamY = 1.0f;
 	upCamZ = 0.0f;
