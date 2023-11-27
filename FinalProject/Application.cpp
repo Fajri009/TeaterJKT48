@@ -62,6 +62,12 @@ void Application::Init()
 	layarLedDepan->SetScale(4.2f, 2.5f, 0.05f);
 	layarLedDepan->SetColor(94, 232, 247);
 
+	layarLedBelakang = new Cube(shader);
+	layarLedBelakang->Init();
+	layarLedBelakang->SetRotation(0, 0, 1, 0);
+	layarLedBelakang->SetScale(4.2f, 2.5f, 1.0f);
+	layarLedBelakang->SetColor(0, 0, 0);
+
 	// setup perspective 
 	//setupPerspective();
 	// setup camera
@@ -88,60 +94,35 @@ void Application::Lantai() {
 	lantai->SetColor(139, 69, 19);
 	lantai->SetPosition(0, 0, 0);
 	lantai->Draw();
-
-	//cube->SetColor(139, 69, 19); 
-	//cube->SetPosition(0.0f, 0.0f, 0.0f);  // Position at the bottom
-	//cube->SetScale(100.0f, 0.01f, 100.0f);  // Large flat surface
-	//cube->Draw();
 }
 
 void Application::Panggung() {
 	panggung->SetColor(128, 128, 128);
 	panggung->SetPosition(0, 0, 1.7f);
 	panggung->Draw();
-
-	/*cube->SetColor(128, 128, 128);
-	cube->SetPosition(0.0f, 0.0f, 1.7f);
-	cube->SetScale(13.0f, 1.0f, 6.0f);
-	cube->Draw();*/
 }
 
 void Application::LayarLED() {
-	// Layar LED 1 (Belakang)
-	cube->SetColor(0, 0, 0);
-	cube->SetPosition(0.0f, 1.75f, -0.4f);
-	cube->SetScale(4.2f, 2.5f, 1.0f);
-	cube->Draw();
+	// Layar LED Tengah
+	layarLedDepan->SetPosition(0.0f, 1.75f, 0.13f);
+	layarLedDepan->Draw();
 
-	// Layar LED 1 (Depan)
-	cube->SetColor(94, 232, 247);
-	cube->SetPosition(0.0f, 1.75f, 0.13f);
-	cube->SetScale(4.2f, 2.5f, 0.05f);
-	cube->Draw();
+	layarLedBelakang->SetPosition(0.0f, 1.75f, -0.4f);
+	layarLedBelakang->Draw();
 
-	// Layar LED 2 (Belakang)
-	cube->SetColor(0, 0, 0);
-	cube->SetPosition(-4.0f, 1.75f, 1.5f);
-	cube->SetScale(4.2f, 2.5f, 1.0f);
-	cube->Draw();
+	// Layar LED Kiri
+	layarLedDepan->SetPosition(-4.0f, 1.75f, 2.03f);
+	layarLedDepan->Draw();
 
-	// Layar LED 2 (Depan)
-	cube->SetColor(94, 232, 247);
-	cube->SetPosition(-4.0f, 1.75f, 2.03f);
-	cube->SetScale(4.2f, 2.5f, 0.05f);
-	cube->Draw();
+	layarLedBelakang->SetPosition(-4.0f, 1.75f, 1.5f);
+	layarLedBelakang->Draw();
+	
+	// Layar LED Kanan
+	layarLedDepan->SetPosition(4.0f, 1.75f, 2.03f);
+	layarLedDepan->Draw();
 
-	// Layar LED 3 (Belakang)
-	cube->SetColor(0, 0, 0);
-	cube->SetPosition(4.0f, 1.75f, 1.5f);
-	cube->SetScale(4.2f, 2.5f, 1.0f);
-	cube->Draw();
-
-	// Layar LED 3 (Depan)
-	cube->SetColor(94, 232, 247);
-	cube->SetPosition(4.0f, 1.75f, 2.03f);
-	cube->SetScale(4.2f, 2.5f, 0.05f);
-	cube->Draw();
+	layarLedBelakang->SetPosition(4.0f, 1.75f, 1.5f);
+	layarLedBelakang->Draw();
 }
 
 void Application::Kursi(float posX, float posY) {
