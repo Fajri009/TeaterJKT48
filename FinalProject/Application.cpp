@@ -114,8 +114,10 @@ void Application::LayarLED() {
 	cube->Draw();
 
 	// Layar LED 1 (Depan)
-	layarLedDepan->SetPosition(0.0f, 1.75f, 0.13f);
-	layarLedDepan->Draw();
+	cube->SetColor(94, 232, 247);
+	cube->SetPosition(0.0f, 1.75f, 0.13f);
+	cube->SetScale(4.2f, 2.5f, 0.05f);
+	cube->Draw();
 
 	// Layar LED 2 (Belakang)
 	cube->SetColor(0, 0, 0);
