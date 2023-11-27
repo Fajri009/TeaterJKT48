@@ -15,6 +15,7 @@ private:
 	Cube* cube; 
 	Cube* lantai;
 	Cube* panggung;
+	Cube* mic;
 	Cube* layarLedDepan;
 	Cube* layarLedBelakang;
 	Cube* tangkaiKursi;
@@ -28,9 +29,9 @@ private:
 	void setupLighting();
 	void Lantai();
 	void Panggung();
+	void Mic();
 	void LayarLED();
-	void Kursi1();
-	void Kursi2();
+	void Kursi();
 	virtual void Init();
 	virtual void DeInit(); 
 	virtual void Update(double deltaTime);

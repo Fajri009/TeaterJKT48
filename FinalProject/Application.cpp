@@ -55,12 +55,16 @@ void Application::Init()
 	panggung->Init();
 	panggung->SetRotation(0, 0, 1, 0);
 	panggung->SetScale(13.0f, 1.0f, 6.0f);
+	
+	mic = new Cube(shader);
+	mic->Init();
+	mic->SetRotation(0, 0, 1, 0);
 
 	layarLedDepan = new Cube(shader);
 	layarLedDepan->Init();
 	layarLedDepan->SetRotation(0, 0, 1, 0);
 	layarLedDepan->SetScale(4.2f, 2.5f, 0.05f);
-	layarLedDepan->SetColor(94, 232, 247);
+	layarLedDepan->SetColor(219, 112, 147);
 
 	layarLedBelakang = new Cube(shader);
 	layarLedBelakang->Init();
@@ -106,6 +110,34 @@ void Application::Panggung() {
 	panggung->Draw();
 }
 
+void Application::Mic() {
+	for (int x = -4; x <= 4; x += 4) {
+		// Alas
+		mic->SetPosition(0 + x, 0.5f, 4);
+		mic->SetScale(0.5f, 0.2f, 0.5f);
+		mic->SetColor(0, 0, 0);
+		mic->Draw();
+
+		// Tangkai
+		mic->SetPosition(0 + x, 1.1f, 4);
+		mic->SetScale(0.1f, 1, 0.1f);
+		mic->SetColor(0, 0, 0);
+		mic->Draw();
+
+		// Pegangan Mic
+		mic->SetPosition(0 + x, 1.65f, 4);
+		mic->SetColor(0, 0, 0);
+		mic->SetScale(0.1f, 0.1f, 0.5f);
+		mic->Draw();
+
+		// Output Mic
+		mic->SetPosition(0 + x, 1.65f, 3.7f);
+		mic->SetColor(192, 192, 192);
+		mic->SetScale(0.15f, 0.15f, 0.15f);
+		mic->Draw();
+	}
+}
+
 void Application::LayarLED() {
 	// Layar LED Tengah
 	layarLedDepan->SetPosition(0.0f, 1.75f, 0.13f);
@@ -129,8 +161,7 @@ void Application::LayarLED() {
 	layarLedBelakang->Draw();
 }
 
-void Application::Kursi1() {
-
+void Application::Kursi() {
 	for (int x = -6; x <= 6; x+=2) {
 		int a = 0;
 		int diffRow = 2;
@@ -197,7 +228,7 @@ void Application::Render()
 	glViewport(0, 0, this->screenWidth, this->screenHeight);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	SetBackgroundColor(219, 112, 147);
+	SetBackgroundColor(94, 232, 247);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
@@ -215,9 +246,11 @@ void Application::Render()
 
 	Panggung();
 
+	Mic();
+
 	LayarLED();
 
-	Kursi1();
+	Kursi();
 
 	glDisable(GL_DEPTH_TEST);
 }
