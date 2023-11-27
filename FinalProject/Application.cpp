@@ -129,51 +129,67 @@ void Application::LayarLED() {
 	layarLedBelakang->Draw();
 }
 
-void Application::Kursi(float posX, float posY) {
-	// Kaki Kiri Depan
-	tangkaiKursi->SetPosition(-0.25, 0, 8);
-	tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
-	tangkaiKursi->Draw();
+void Application::Kursi1() {
 
-	// Kaki Kanan Depan
-	tangkaiKursi->SetPosition(0.25, 0, 8);
-	tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
-	tangkaiKursi->Draw();
+	for (int x = -6; x <= 6; x+=2) {
+		int a = 0;
+		int diffRow = 2;
 
-	// Kaki Kiri Belakang
-	tangkaiKursi->SetPosition(-0.25, 0, 8.5);
-	tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
-	tangkaiKursi->Draw();
+		for (int z = 0; z <= 8; z +=2) {
+			if (diffRow == z) {
+				a = 1;
+				diffRow += 4;
+			}
+			else {
+				a = 0;
+			}
 
-	// Kaki Kanan Belakang
-	tangkaiKursi->SetPosition(0.25, 0, 8.5);
-	tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
-	tangkaiKursi->Draw();
+			// Kaki Kiri Depan
+			tangkaiKursi->SetPosition(-0.25 + x + a, 0, 8 + z);
+			tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
+			tangkaiKursi->Draw();
 
-	// Bantal Bawah
-	bantalKursi->SetPosition(0, 0.45f, 8.25f);
-	bantalKursi->SetScale(0.57, 0.1, 0.57);
-	bantalKursi->Draw();
+			// Kaki Kanan Depan
+			tangkaiKursi->SetPosition(0.25 + x + a, 0, 8 + z);
+			tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
+			tangkaiKursi->Draw();
 
-	// Tangkai Kiri 
-	tangkaiKursi->SetPosition(-0.25f, 0.75f, 8.5f);
-	tangkaiKursi->SetScale(0.07f, 0.5f, 0.07f);
-	tangkaiKursi->Draw();
+			// Kaki Kiri Belakang
+			tangkaiKursi->SetPosition(-0.25 + x + a, 0, 8.5 + z);
+			tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
+			tangkaiKursi->Draw();
 
-	// Tangkai Kanan
-	tangkaiKursi->SetPosition(0.25f, 0.75f, 8.5f);
-	tangkaiKursi->SetScale(0.07f, 0.5f, 0.07f);
-	tangkaiKursi->Draw();
+			// Kaki Kanan Belakang
+			tangkaiKursi->SetPosition(0.25 + x + a, 0, 8.5 + z);
+			tangkaiKursi->SetScale(0.07f, 0.8f, 0.07f);
+			tangkaiKursi->Draw();
 
-	// Tangkai Atas
-	tangkaiKursi->SetPosition(0, 1.03f, 8.5f);
-	tangkaiKursi->SetScale(0.57f, 0.07f, 0.07f);
-	tangkaiKursi->Draw();
+			// Bantal Bawah
+			bantalKursi->SetPosition(0 + x + a, 0.45f, 8.25f + z);
+			bantalKursi->SetScale(0.57, 0.1, 0.57);
+			bantalKursi->Draw();
 
-	// Bantal Belakang
-	bantalKursi->SetPosition(0, 0.77f, 8.5f);
-	bantalKursi->SetScale(0.43f, 0.45f, 0.07f);
-	bantalKursi->Draw();
+			// Tangkai Kiri 
+			tangkaiKursi->SetPosition(-0.25f + x + a, 0.75f, 8.5f + z);
+			tangkaiKursi->SetScale(0.07f, 0.5f, 0.07f);
+			tangkaiKursi->Draw();
+
+			// Tangkai Kanan
+			tangkaiKursi->SetPosition(0.25f + x + a, 0.75f, 8.5f + z);
+			tangkaiKursi->SetScale(0.07f, 0.5f, 0.07f);
+			tangkaiKursi->Draw();
+
+			// Tangkai Atas
+			tangkaiKursi->SetPosition(0 + x + a, 1.03f, 8.5f + z);
+			tangkaiKursi->SetScale(0.57f, 0.07f, 0.07f);
+			tangkaiKursi->Draw();
+
+			// Bantal Belakang
+			bantalKursi->SetPosition(0 + x + a, 0.77f, 8.5f + z);
+			bantalKursi->SetScale(0.43f, 0.45f, 0.07f);
+			bantalKursi->Draw();
+		}
+	}
 }
 
 void Application::Render()
@@ -201,7 +217,7 @@ void Application::Render()
 
 	LayarLED();
 
-	Kursi(0, 0);
+	Kursi1();
 
 	glDisable(GL_DEPTH_TEST);
 }
@@ -280,10 +296,10 @@ void Application::InitCamera()
 {
 	posCamX = 0.0f;
 	posCamY = 1.4f;
-	posCamZ = 12.0f;
+	posCamZ = 18.0f;
 	viewCamX = 0.0f;
 	viewCamY = 1.0f;
-	viewCamZ = 5.0f;
+	viewCamZ = 8.0f;
 	upCamX = 0.0f;
 	upCamY = 1.0f;
 	upCamZ = 0.0f;

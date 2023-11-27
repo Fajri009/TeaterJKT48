@@ -29,7 +29,8 @@ private:
 	void Lantai();
 	void Panggung();
 	void LayarLED();
-	void Kursi(float posX, float posZ);
+	void Kursi1();
+	void Kursi2();
 	virtual void Init();
 	virtual void DeInit(); 
 	virtual void Update(double deltaTime);
