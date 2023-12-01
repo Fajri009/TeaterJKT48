@@ -29,7 +29,7 @@ void Application::setupCamera()
 void Application::setupLighting()
 {
 	// set lighting attributes
-	glm::vec3 lightPos = glm::vec3(4, 4, 0);
+	glm::vec3 lightPos = glm::vec3(0, 6, 12.5);
 	shader->setVec3("lightPos", lightPos);
 	shader->setVec3("viewPos", viewPos);
 	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
@@ -69,7 +69,7 @@ void Application::Init()
 	layarLedDepan->Init();
 	layarLedDepan->SetRotation(0, 0, 1, 0);
 	layarLedDepan->SetScale(4.2f, 2.5f, 0.05f);
-	layarLedDepan->SetColor(219, 112, 147);
+	layarLedDepan->SetColor(94, 232, 247);
 
 	layarLedBelakang = new Cube(shader);
 	layarLedBelakang->Init();
@@ -217,6 +217,7 @@ void Application::LayarLED() {
 }
 
 void Application::Lampu() {
+	setupLighting();
 	for (int a = -5; a <= 5; a += 5) {
 		// Tangkai Lampu
 		lampuBelakang->SetScale(0.1f, 1.5f, 0.1f);
@@ -334,14 +335,14 @@ void Application::Speaker() {
 		speaker->SetColor(128, 128, 128);
 		speaker->Draw();
 
-			for (float b = a + 0.2; b <= -3.3f; b += 1.5f) {
-				// Output Speaker
-				speaker->SetScale(0.7f, 0.5f, 0.1f);
-				speaker->SetPosition(b, 6.0f, 1.4f);
-				speaker->SetColor(0, 0, 0);
-				speaker->Draw();
-			}
-	
+		for (float b = a + 0.2; b <= -3.3f; b += 1.5f) {
+			// Output Speaker
+			speaker->SetScale(0.7f, 0.5f, 0.1f);
+			speaker->SetPosition(b, 6.0f, 1.4f);
+			speaker->SetColor(0, 0, 0);
+			speaker->Draw();
+		}
+
 
 		// Output Speaker
 		speaker->SetScale(0.7f, 0.5f, 0.1f);
@@ -374,7 +375,6 @@ void Application::Render()
 	// setup camera
 	setupCamera();
 	// setup lighting
-	setupLighting();
 
 	Lantai();
 
