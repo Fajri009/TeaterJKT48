@@ -51,6 +51,10 @@ void Application::Init()
 	lantai->SetRotation(0, 0, 1, 0);
 	lantai->SetScale(100.0f, 0.01f, 100.0f);
 
+	tembok = new Cube(shader);
+	tembok->Init();
+	tembok->SetRotation(0, 0, 1, 0);
+
 	panggung = new Cube(shader);
 	panggung->Init();
 	panggung->SetRotation(0, 0, 1, 0);
@@ -102,6 +106,43 @@ void Application::Lantai() {
 	lantai->SetColor(139, 69, 19);
 	lantai->SetPosition(0, 0, 0);
 	lantai->Draw();
+}
+
+void Application::Tembok() {
+	// Tembok Kiri
+	tembok->SetScale(1.0f, 10.0f, 25.0f);
+	tembok->SetPosition(-10, 2.5, 8);
+	tembok->Draw();
+
+	// Tembok Kanan
+	tembok->SetScale(1.0f, 10.0f, 25.0f);
+	tembok->SetPosition(10, 2.5, 8);
+	tembok->Draw();
+	
+	// Tembok Belakang
+	tembok->SetScale(20.0f, 10.0f, 1.0f); 
+	tembok->SetPosition(0, 2.5, -5); 
+	tembok->Draw();
+
+	// Tembok Depan (Kanan)
+	tembok->SetScale(8.0f, 10.0f, 1.0f);
+	tembok->SetPosition(6.0f, 2.5f, 20.0f);
+	tembok->Draw();
+	
+	// Tembok Depan (Kiri)
+	tembok->SetScale(8.0f, 10.0f, 1.0f);
+	tembok->SetPosition(-6.0f, 2.5f, 20.0f);
+	tembok->Draw();
+
+	// Tembok Depan (Atas)
+	tembok->SetScale(4.0f, 4.0f, 1.0f);
+	tembok->SetPosition(0.0f, 5.5f, 20.0f);
+	tembok->Draw();
+
+	// Atap
+	tembok->SetScale(20.0f, 1.0f, 25.0f);
+	tembok->SetPosition(0.0f, 7.5f, 8.0f);
+	tembok->Draw();
 }
 
 void Application::Panggung() {
@@ -244,6 +285,8 @@ void Application::Render()
 
 	Lantai();
 
+	Tembok();
+
 	Panggung();
 
 	Mic();
@@ -329,10 +372,10 @@ void Application::InitCamera()
 {
 	posCamX = 0.0f;
 	posCamY = 1.4f;
-	posCamZ = 18.0f;
+	posCamZ = 25.0f;
 	viewCamX = 0.0f;
 	viewCamY = 1.0f;
-	viewCamZ = 8.0f;
+	viewCamZ = 2.0f;
 	upCamX = 0.0f;
 	upCamY = 1.0f;
 	upCamZ = 0.0f;

@@ -14,6 +14,7 @@ private:
 	Shader *shader;
 	Cube* cube; 
 	Cube* lantai;
+	Cube* tembok;
 	Cube* panggung;
 	Cube* mic;
 	Cube* layarLedDepan;
@@ -28,6 +29,7 @@ private:
 	void setupCamera();
 	void setupLighting();
 	void Lantai();
+	void Tembok();
 	void Panggung();
 	void Mic();
 	void LayarLED();
