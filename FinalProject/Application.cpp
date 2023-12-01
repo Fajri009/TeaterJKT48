@@ -54,6 +54,7 @@ void Application::Init()
 	tembok = new Cube(shader);
 	tembok->Init();
 	tembok->SetRotation(0, 0, 1, 0);
+	tembok->SetColor(139, 69, 19);
 
 	panggung = new Cube(shader);
 	panggung->Init();
