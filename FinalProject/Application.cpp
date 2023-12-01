@@ -49,7 +49,7 @@ void Application::Init()
 	lantai = new Cube(shader);
 	lantai->Init();
 	lantai->SetRotation(0, 0, 1, 0);
-	lantai->SetScale(100.0f, 0.01f, 100.0f);
+	lantai->SetScale(200.0f, 0.01f, 200.0f);
 
 	tembok = new Cube(shader);
 	tembok->Init();
@@ -86,6 +86,15 @@ void Application::Init()
 	bantalKursi->Init();
 	bantalKursi->SetRotation(0, 0, 1, 0);
 	bantalKursi->SetColor(178, 34, 34);
+
+	lampuBelakang = new Cube(shader);
+	lampuBelakang->Init();
+	lampuBelakang->SetRotation(0, 0, 1, 0);
+	lampuBelakang->SetColor(0, 0, 0);
+
+	lampuDepan = new Cube(shader);
+	lampuDepan->Init();
+	lampuDepan->SetRotation(0, 0, 1, 0);
 
 	InitCamera();
 }
@@ -203,6 +212,38 @@ void Application::LayarLED() {
 	layarLedBelakang->Draw();
 }
 
+void Application::Lampu() {
+	for (int a = -5; a <= 5; a += 5) {
+		// Tangkai Lampu
+		lampuBelakang->SetScale(0.1f, 1.5f, 0.1f);
+		lampuBelakang->SetPosition(0.0f + a, 7.0f, 12.5f);
+		lampuBelakang->Draw();
+
+		// Lampu Belakang
+		lampuBelakang->SetScale(0.8f, 0.8f, 0.5f);
+		lampuBelakang->SetPosition(0.0f + a, 5.9f, 12.5f);
+		lampuBelakang->Draw();
+
+		for (float y = 0.0f; y <= 0.4f; y += 0.4f) {
+			for (float x = 0.0f; x <= 0.4f; x += 0.4f) {
+				// Lampu Depan
+				lampuDepan->SetScale(0.2f, 0.2f, 0.15f);
+				if (a == -5) {
+					lampuDepan->SetColor(34, 139, 34);
+				}
+				else if (a == 0) {
+					lampuDepan->SetColor(220, 20, 60);
+				}
+				else {
+					lampuDepan->SetColor(0, 128, 128);
+				}
+				lampuDepan->SetPosition(0.2f - x + a, 6.1f - y, 12.2f);
+				lampuDepan->Draw();
+			}
+		}
+	}
+}
+
 void Application::Kursi() {
 	for (int x = -6; x <= 6; x+=2) {
 		int a = 0;
@@ -296,6 +337,8 @@ void Application::Render()
 
 	Kursi();
 
+	Lampu();
+
 	glDisable(GL_DEPTH_TEST);
 }
 
@@ -372,8 +415,10 @@ void Application::ProcessInput(GLFWwindow* window)
 void Application::InitCamera()
 {
 	posCamX = 0.0f;
-	posCamY = 1.4f;
-	posCamZ = 25.0f;
+	//posCamY = 1.4f;
+	posCamY = 7.0f;
+	posCamZ = 12.0f;
+	//posCamZ = 25.0f;
 	viewCamX = 0.0f;
 	viewCamY = 1.0f;
 	viewCamZ = 2.0f;

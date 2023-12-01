@@ -21,6 +21,8 @@ private:
 	Cube* layarLedBelakang;
 	Cube* tangkaiKursi;
 	Cube* bantalKursi;
+	Cube* lampuBelakang;
+	Cube* lampuDepan;
 	float angle;
 	glm::vec3 viewPos;
 	GLuint shaderProgram, VBO, VAO, EBO, texture, VBO2, VAO2, EBO2, texture2;
@@ -34,6 +36,7 @@ private:
 	void Mic();
 	void LayarLED();
 	void Kursi();
+	void Lampu();
 	virtual void Init();
 	virtual void DeInit(); 
 	virtual void Update(double deltaTime);
