@@ -415,10 +415,8 @@ void Application::ProcessInput(GLFWwindow* window)
 void Application::InitCamera()
 {
 	posCamX = 0.0f;
-	//posCamY = 1.4f;
-	posCamY = 7.0f;
-	posCamZ = 12.0f;
-	//posCamZ = 25.0f;
+	posCamY = 1.4f;
+	posCamZ = 25.0f;
 	viewCamX = 0.0f;
 	viewCamY = 1.0f;
 	viewCamZ = 2.0f;
