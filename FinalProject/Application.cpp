@@ -96,6 +96,10 @@ void Application::Init()
 	lampuDepan->Init();
 	lampuDepan->SetRotation(0, 0, 1, 0);
 
+	speaker = new Cube(shader);
+	speaker->Init();
+	speaker->SetRotation(0, 0, 1, 0);
+
 	InitCamera();
 }
 
@@ -306,6 +310,53 @@ void Application::Kursi() {
 	}
 }
 
+void Application::Speaker() {
+	for (int a = -5; a <= 3; a += 8) {
+		int kiri = 0;
+		int kanan = 0;
+		for (int x = 0; x <= 2; x += 2) {
+			// Tangkai Speaker
+			speaker->SetScale(0.1f, 1.5f, 0.1f);
+			speaker->SetPosition(a + x, 7.0f, 1.0f);
+			speaker->SetColor(0, 0, 0);
+			speaker->Draw();
+
+			if (x == 0) {
+				kiri = a + x;
+			}
+			else {
+				kanan = a + x;
+			}
+		}
+		// Speaker 
+		speaker->SetScale(3.0f, 1.0f, 0.7f);
+		speaker->SetPosition((kiri + kanan) / 2, 6.0f, 1.0f);
+		speaker->SetColor(128, 128, 128);
+		speaker->Draw();
+
+			for (float b = a + 0.2; b <= -3.3f; b += 1.5f) {
+				// Output Speaker
+				speaker->SetScale(0.7f, 0.5f, 0.1f);
+				speaker->SetPosition(b, 6.0f, 1.4f);
+				speaker->SetColor(0, 0, 0);
+				speaker->Draw();
+			}
+	
+
+		// Output Speaker
+		speaker->SetScale(0.7f, 0.5f, 0.1f);
+		speaker->SetPosition(4.8, 6.0f, 1.4f);
+		speaker->SetColor(0, 0, 0);
+		speaker->Draw();
+
+		// Output Speaker
+		speaker->SetScale(0.7f, 0.5f, 0.1f);
+		speaker->SetPosition(3.3, 6.0f, 1.4f);
+		speaker->SetColor(0, 0, 0);
+		speaker->Draw();
+	}
+}
+
 void Application::Render()
 {
 	glViewport(0, 0, this->screenWidth, this->screenHeight);
@@ -338,6 +389,8 @@ void Application::Render()
 	Kursi();
 
 	Lampu();
+
+	Speaker();
 
 	glDisable(GL_DEPTH_TEST);
 }
@@ -415,10 +468,10 @@ void Application::ProcessInput(GLFWwindow* window)
 void Application::InitCamera()
 {
 	posCamX = 0.0f;
-	posCamY = 1.4f;
+	posCamY = 2.0f;
 	posCamZ = 25.0f;
 	viewCamX = 0.0f;
-	viewCamY = 1.0f;
+	viewCamY = 0.0f;
 	viewCamZ = 2.0f;
 	upCamX = 0.0f;
 	upCamY = 1.0f;
